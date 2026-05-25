@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GlowUp Academy 💄</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dp:#c2185b;--pm:#e91e8c;--md:#f06292;--lt:#f8bbd0;--pl:#fce4ec;--ul:#fff0f6;
+  --gd:#f9a825;--gl:#fff8e1;--pur:#ce93d8;--wh:#fff;
+  --td:#4a1535;--tm:#7b3f6e;--ts:#b87ea1;
+  --sp:0 8px 32px rgba(233,30,140,.18);--sc:0 4px 24px rgba(194,24,91,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Nunito',sans-serif;background:linear-gradient(135deg,#fff0f6 0%,#fce4ec 50%,#f8bbd0 100%);min-height:100vh;color:var(--td);overflow-x:hidden}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--pl)}::-webkit-scrollbar-thumb{background:var(--md);border-radius:3px}
+
+/* HEADER */
+header{background:linear-gradient(135deg,#e91e8c,#c2185b,#ad1457);position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(194,24,91,.4)}
+.hi{max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.logo-ic{font-size:1.9rem;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.logo-tx{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:#fff;line-height:1}
+.logo-sb{font-size:.65rem;font-weight:700;color:rgba(255,255,255,.75);letter-spacing:2px;text-transform:uppercase}
+.hstats{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.sb{background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.3);border-radius:20px;padding:5px 12px;color:#fff;font-weight:800;font-size:.82rem;display:flex;align-items:center;gap:5px;cursor:default;transition:.2s}
+.sb:hover{background:rgba(255,255,255,.28)}
+.sb.sf{background:rgba(249,168,37,.25);border-color:rgba(249,168,37,.5)}
+
+/* NAV */
+.nav-wrap{max-width:1100px;margin:0 auto;padding:14px 20px 4px;display:flex;gap:8px;flex-wrap:wrap}
+.ntab{background:#fff;border:2px solid var(--lt);border-radius:40px;padding:7px 16px;font-size:.82rem;font-weight:800;color:var(--tm);cursor:pointer;transition:.2s;display:flex;align-items:center;gap:5px}
+.ntab:hover,.ntab.on{background:linear-gradient(135deg,#e91e8c,#c2185b);border-color:transparent;color:#fff;box-shadow:0 4px 14px rgba(233,30,140,.35);transform:translateY(-2px)}
+
+/* HERO */
+.hero{max-width:1100px;margin:0 auto;padding:22px 20px 10px}
+.hero-row{display:flex;gap:16px;align-items:stretch;flex-wrap:wrap}
+.hero-main{flex:2;min-width:220px;background:#fff;border-radius:24px;padding:20px;box-shadow:var(--sc)}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,3.5vw,2rem);font-weight:900;color:var(--dp);margin-bottom:4px}
+.hero-sub{color:var(--ts);font-size:.88rem;margin-bottom:14px}
+.prog-track{background:var(--pl);border-radius:50px;height:14px;overflow:hidden;margin-bottom:6px}
+.prog-fill{height:100%;background:linear-gradient(90deg,#f48fb1,#e91e8c,#c2185b);border-radius:50px;transition:width 1s cubic-bezier(.4,0,.2,1);position:relative}
+.prog-fill::after{content:'';position:absolute;right:0;top:0;bottom:0;width:18px;background:rgba(255,255,255,.4);border-radius:50px;animation:shim 1.4s ease-in-out infinite}
+@keyframes shim{0%,100%{opacity:.3}50%{opacity:.8}}
+.prog-row{display:flex;justify-content:space-between;font-size:.78rem;font-weight:800;color:var(--ts)}
+.hero-side{display:flex;flex-direction:column;gap:12px;flex:1;min-width:180px}
+.streak-card{background:linear-gradient(135deg,#fff8e1,#fff3cd);border:2px solid #f9a825;border-radius:20px;padding:14px 16px;display:flex;align-items:center;gap:10px}
+.streak-ic{font-size:2rem;animation:flicker 1.5s ease-in-out infinite}
+@keyframes flicker{0%,100%{opacity:1}50%{opacity:.7}}
+.streak-val{font-size:1.6rem;font-weight:900;color:#e65100;line-height:1}
+.streak-lbl{font-size:.75rem;font-weight:700;color:#bf360c}
+.xp-card{background:linear-gradient(135deg,var(--ul),var(--pl));border:2px solid var(--lt);border-radius:20px;padding:14px 16px;display:flex;align-items:center;gap:10px}
+.xp-val{font-size:1.5rem;font-weight:900;color:var(--dp);line-height:1}
+.xp-lbl{font-size:.75rem;font-weight:700;color:var(--ts)}
+
+/* SECTION DIVIDER */
+.sdiv{display:flex;align-items:center;gap:12px;margin:24px 0 14px}
+.sdiv-line{flex:1;height:2px;background:linear-gradient(90deg,transparent,var(--lt),transparent)}
+.sdiv-lbl{background:linear-gradient(135deg,var(--pl),var(--lt));border:2px solid var(--lt);border-radius:30px;padding:7px 18px;font-family:'Playfair Display',serif;font-weight:700;font-size:.95rem;color:var(--dp);display:flex;align-items:center;gap:7px;white-space:nowrap}
+
+/* LEVEL CARDS */
+.lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:14px}
+.lcard{background:#fff;border-radius:20px;padding:18px 14px 14px;box-shadow:var(--sc);border:2px solid transparent;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px}
+.lcard::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(233,30,140,.05),rgba(194,24,91,.08));opacity:0;transition:.3s}
+.lcard:hover::before{opacity:1}
+.lcard.done{border-color:var(--md);background:linear-gradient(135deg,#fff0f6,#fce4ec)}
+.lcard.curr{border-color:var(--pm);animation:glow 2s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 6px 28px rgba(233,30,140,.28),0 0 0 4px rgba(233,30,140,.12)}50%{box-shadow:0 8px 36px rgba(233,30,140,.45),0 0 0 6px rgba(233,30,140,.18)}}
+.lcard.lckd{opacity:.5;cursor:not-allowed;filter:grayscale(.4)}
+.lcard:hover:not(.lckd){transform:translateY(-5px);box-shadow:0 14px 40px rgba(194,24,91,.22);border-color:var(--md)}
+.lic{font-size:2.2rem;line-height:1;position:relative}
+.lbadge{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:900;color:#fff;border:2px solid #fff}
+.b-done{background:#4caf50}.b-lock{background:#9e9e9e}.b-star{background:var(--gd)}
+.lnum{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--ts)}
+.ltitle{font-family:'Playfair Display',serif;font-size:.85rem;font-weight:700;color:var(--td);line-height:1.3}
+.lstars{display:flex;gap:2px}
+.star{font-size:.8rem;opacity:.25}.star.lit{opacity:1}
+.lxp{background:linear-gradient(135deg,var(--pl),var(--lt));border-radius:20px;padding:2px 9px;font-size:.72rem;font-weight:800;color:var(--dp)}
+
+/* MODAL */
+.moverlay{display:none;position:fixed;inset:0;background:rgba(74,21,53,.6);z-index:200;backdrop-filter:blur(8px);justify-content:center;align-items:flex-start;padding:16px;overflow-y:auto}
+.moverlay.open{display:flex;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal{background:#fff;border-radius:28px;max-width:660px;width:100%;margin:auto;box-shadow:0 24px 80px rgba(194,24,91,.3);animation:slideUp .35s cubic-bezier(.4,0,.2,1)}
+@keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+.mhdr{background:linear-gradient(135deg,#e91e8c,#c2185b);border-radius:28px 28px 0 0;padding:22px 24px 18px;color:#fff;position:relative}
+.mclose{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.2);border:none;color:#fff;font-size:1.1rem;width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
+.mclose:hover{background:rgba(255,255,255,.35)}
+.mnum{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;opacity:.8;margin-bottom:2px}
+.mtitle{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:900}
+.mbody{padding:20px 24px 24px;display:flex;flex-direction:column;gap:18px}
+.mdesc{color:var(--tm);font-size:.92rem;line-height:1.6}
+.msec{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--dp);display:flex;align-items:center;gap:6px;margin-bottom:10px}
+
+/* VIDEO BUTTONS */
+.vid-grid{display:flex;flex-direction:column;gap:10px}
+.vid-btn{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#fff0f6,#fce4ec);border:2px solid var(--lt);border-radius:16px;padding:14px 16px;cursor:pointer;text-decoration:none;transition:all .25s;width:100%}
+.vid-btn:hover{background:linear-gradient(135deg,#fce4ec,#f8bbd0);transform:translateX(4px);box-shadow:0 6px 20px rgba(233,30,140,.2);border-color:var(--md)}
+.vid-play{width:52px;height:52px;background:linear-gradient(135deg,#e91e8c,#c2185b);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;box-shadow:0 4px 14px rgba(233,30,140,.35);transition:.25s}
+.vid-btn:hover .vid-play{transform:scale(1.08)}
+.vid-info{flex:1;min-width:0;text-align:left}
+.vid-title{font-weight:800;font-size:.9rem;color:var(--td)}
+.vid-sub{font-size:.75rem;color:var(--ts);margin-top:2px}
+.vid-arrow{font-size:1.2rem;color:var(--md);flex-shrink:0}
+
+/* CHECKLIST */
+.checklist{display:flex;flex-direction:column;gap:8px}
+.check-item{display:flex;align-items:flex-start;gap:12px;background:var(--ul);border:2px solid var(--lt);border-radius:14px;padding:12px 14px;cursor:pointer;transition:all .2s;user-select:none}
+.check-item:hover{border-color:var(--md);background:var(--pl)}
+.check-item.checked{background:linear-gradient(135deg,#f0fff4,#e8f5e9);border-color:#66bb6a}
+.check-box{width:24px;height:24px;border-radius:8px;border:2.5px solid var(--lt);background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;transition:all .2s;margin-top:1px}
+.check-item.checked .check-box{background:linear-gradient(135deg,#66bb6a,#43a047);border-color:#43a047;color:#fff}
+.check-step{font-size:.88rem;font-weight:700;color:var(--td);line-height:1.5}
+.check-item.checked .check-step{color:#2e7d32;text-decoration:line-through;opacity:.75}
+.check-num{font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--ts);margin-top:2px}
+
+/* Progress ring for checklist */
+.check-progress{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fff;border-radius:12px;border:2px solid var(--lt)}
+.check-prog-bar{flex:1;background:var(--pl);border-radius:50px;height:8px;overflow:hidden}
+.check-prog-fill{height:100%;background:linear-gradient(90deg,#66bb6a,#43a047);border-radius:50px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.check-prog-lbl{font-size:.78rem;font-weight:800;color:var(--dp);white-space:nowrap}
+
+/* LOCK WARNING */
+.lock-warn{background:linear-gradient(135deg,#fff3e0,#ffe0b2);border:2px solid #ffb74d;border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:10px;font-size:.85rem;font-weight:700;color:#e65100}
+
+/* TIPS */
+.tips-list{list-style:none;display:flex;flex-direction:column;gap:7px}
+.tips-list li{background:var(--ul);border-left:3px solid var(--md);border-radius:0 10px 10px 0;padding:8px 12px;font-size:.85rem;color:var(--tm);display:flex;gap:7px}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 22px;border:none;border-radius:50px;font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:800;cursor:pointer;transition:.25s}
+.btn-p{background:linear-gradient(135deg,#e91e8c,#c2185b);color:#fff;box-shadow:0 4px 18px rgba(233,30,140,.35)}
+.btn-p:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 28px rgba(233,30,140,.45)}
+.btn-p:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-s{background:var(--pl);color:var(--dp);border:2px solid var(--lt)}
+.btn-s:hover{background:var(--lt);transform:translateY(-2px)}
+.mactions{display:flex;gap:10px;flex-wrap:wrap}
+
+/* BADGES */
+.badges-row{display:flex;gap:10px;flex-wrap:wrap}
+.badge-item{background:#fff;border:2px solid var(--lt);border-radius:16px;padding:10px 14px;display:flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:var(--tm);cursor:default}
+.badge-item.earned{border-color:var(--gd);background:var(--gl);color:#e65100}
+.bic{font-size:1.3rem}
+
+/* LEADERBOARD */
+.lb-wrap{background:#fff;border-radius:20px;padding:18px;box-shadow:var(--sc)}
+.lb-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;color:var(--dp);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.lb-row{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;transition:.2s;margin-bottom:4px}
+.lb-row:hover{background:var(--ul)}
+.lb-row.me{background:linear-gradient(135deg,var(--ul),var(--pl));border:2px solid var(--lt)}
+.lb-rank{font-size:1rem;width:28px;text-align:center;font-weight:900}
+.lb-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#e91e8c,#c2185b);display:flex;align-items:center;justify-content:center;font-size:1rem;color:#fff;font-weight:900;flex-shrink:0}
+.lb-name-wrap{flex:1;min-width:0}
+.lb-name{font-weight:700;font-size:.88rem;color:var(--td)}
+.lb-bar{height:4px;background:var(--pl);border-radius:2px;margin-top:3px}
+.lb-bar-fill{height:100%;background:linear-gradient(90deg,var(--md),var(--pm));border-radius:2px;transition:width 1s}
+.lb-xp{font-weight:900;font-size:.85rem;color:var(--pm)}
+
+/* CONFETTI */
+.cconf{position:fixed;inset:0;pointer-events:none;z-index:300;overflow:hidden}
+.cp{position:absolute;border-radius:50%;animation:cfall linear forwards}
+@keyframes cfall{0%{transform:translateY(-20px)rotate(0);opacity:1}100%{transform:translateY(100vh)rotate(720deg);opacity:0}}
+
+/* TOAST */
+.toast{position:fixed;top:74px;right:20px;background:linear-gradient(135deg,#e91e8c,#c2185b);color:#fff;border-radius:20px;padding:11px 18px;font-weight:800;font-size:.9rem;box-shadow:var(--sp);z-index:400;display:none;align-items:center;gap:7px;max-width:300px}
+.toast.show{display:flex;animation:tslide .4s cubic-bezier(.4,0,.2,1)}
+@keyframes tslide{from{transform:translateX(110%);opacity:0}to{transform:translateX(0);opacity:1}}
+
+/* LEVEL UP */
+.lvlup{position:fixed;inset:0;z-index:350;display:none;align-items:center;justify-content:center;background:rgba(74,21,53,.7);backdrop-filter:blur(10px)}
+.lvlup.show{display:flex;animation:fadeIn .3s ease}
+.lvlup-box{background:#fff;border-radius:32px;padding:40px 36px;text-align:center;max-width:340px;width:90%;animation:popIn .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes popIn{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+.lvlup-ic{font-size:4rem}
+.lvlup-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--dp);margin:10px 0 4px}
+.lvlup-sub{color:var(--ts);font-size:.9rem;margin-bottom:20px}
+
+/* MAIN */
+.main{max-width:1100px;margin:0 auto;padding:0 20px 60px}
+
+/* PETAL */
+.petal{position:fixed;pointer-events:none;opacity:.12;animation:fp linear infinite;z-index:0;font-size:1.1rem}
+@keyframes fp{0%{transform:translateY(105vh)rotate(0)}100%{transform:translateY(-10vh)rotate(360deg)}}
+
+@media(max-width:600px){
+  .hi{padding:10px 14px}.hero{padding:14px 14px 6px}.main{padding:0 14px 40px}
+  .hero-row{flex-direction:column}.hero-side{flex-direction:row}
+  .lgrid{grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:10px}
+  .hstats .sb:nth-child(n+3){display:none}
+  .mbody{padding:16px 16px 20px}
+}
+</style>
+</head>
+<body>
+
+<div class="petal" style="left:4%;animation-duration:19s;animation-delay:0s">🌸</div>
+<div class="petal" style="left:17%;animation-duration:23s;animation-delay:5s">💗</div>
+<div class="petal" style="left:31%;animation-duration:17s;animation-delay:9s">🌷</div>
+<div class="petal" style="left:48%;animation-duration:21s;animation-delay:3s">✨</div>
+<div class="petal" style="left:64%;animation-duration:25s;animation-delay:7s">🌸</div>
+<div class="petal" style="left:80%;animation-duration:18s;animation-delay:11s">💕</div>
+<div class="petal" style="left:92%;animation-duration:22s;animation-delay:2s">🌷</div>
+
+<div class="toast" id="toast"></div>
+<div class="cconf" id="cc"></div>
+
+<div class="lvlup" id="lvlup" onclick="closeLvlUp()">
+  <div class="lvlup-box" onclick="event.stopPropagation()">
+    <div class="lvlup-ic" id="luIc">🏆</div>
+    <div class="lvlup-title" id="luTitle">¡Nivel completado!</div>
+    <div class="lvlup-sub" id="luSub"></div>
+    <button class="btn btn-p" style="width:100%;justify-content:center" onclick="closeLvlUp()">¡Seguir aprendiendo! →</button>
+  </div>
+</div>
+
+<header>
+  <div class="hi">
+    <div class="logo" onclick="scrollTo(0,0)">
+      <span class="logo-ic">💄</span>
+      <div><div class="logo-tx">GlowUp Academy</div><div class="logo-sb">Tu escuela de maquillaje</div></div>
+    </div>
+    <div class="hstats">
+      <div class="sb sf">🔥 <span id="hStreak">1</span> días</div>
+      <div class="sb">⭐ <span id="hXp">0</span> XP</div>
+      <div class="sb">🏅 <span id="hDone">0</span>/55</div>
+    </div>
+  </div>
+</header>
+
+<div class="nav-wrap">
+  <div class="ntab on" onclick="filterSec('all',this)">💄 Todos</div>
+  <div class="ntab" onclick="filterSec('base',this)">🌟 Base</div>
+  <div class="ntab" onclick="filterSec('ojos',this)">👁️ Ojos</div>
+  <div class="ntab" onclick="filterSec('labios',this)">💋 Labios</div>
+  <div class="ntab" onclick="filterSec('contorno',this)">✨ Contorno</div>
+  <div class="ntab" onclick="filterSec('color',this)">🎨 Color</div>
+  <div class="ntab" onclick="filterSec('especial',this)">💫 Especial</div>
+  <div class="ntab" onclick="filterSec('pro',this)">👑 Pro</div>
+  <div class="ntab" onclick="filterSec('ranking',this)">🏆 Ranking</div>
+  <div class="ntab" onclick="filterSec('badges',this)">🎖️ Badges</div>
+</div>
+
+<div class="hero">
+  <div class="hero-row">
+    <div class="hero-main">
+      <div class="hero-title">Tu camino a ser una <span style="background:linear-gradient(90deg,#e91e8c,#c2185b);-webkit-background-clip:text;-webkit-text-fill-color:transparent">artista</span> ✨</div>
+      <div class="hero-sub">55 niveles · Badges · Ranking · Videos en YouTube</div>
+      <div class="prog-track"><div class="prog-fill" id="pb" style="width:0%"></div></div>
+      <div class="prog-row"><span id="pLbl">0 de 55 niveles</span><span id="pPct" style="color:var(--dp)">0%</span></div>
+    </div>
+    <div class="hero-side">
+      <div class="streak-card">
+        <span class="streak-ic">🔥</span>
+        <div><div class="streak-val" id="sVal">1</div><div class="streak-lbl">días de racha</div></div>
+      </div>
+      <div class="xp-card">
+        <span style="font-size:1.8rem">⭐</span>
+        <div><div class="xp-val" id="xpVal">0</div><div class="xp-lbl">XP total</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main" id="main"></div>
+
+<!-- MODAL -->
+<div class="moverlay" id="mo" onclick="closeMo(event)">
+  <div class="modal">
+    <div class="mhdr">
+      <button class="mclose" onclick="closeMoD()">✕</button>
+      <div style="display:flex;align-items:center;gap:14px">
+        <span style="font-size:2.5rem" id="mIc"></span>
+        <div><div class="mnum" id="mNum"></div><div class="mtitle" id="mTitle"></div></div>
+      </div>
+    </div>
+    <div class="mbody">
+      <p class="mdesc" id="mDesc"></p>
+
+      <!-- VIDEOS -->
+      <div>
+        <div class="msec">🎬 Videos recomendados</div>
+        <div class="vid-grid" id="mVids"></div>
+      </div>
+
+      <!-- INSTRUCCIONES CHECKLIST -->
+      <div>
+        <div class="msec">📋 Instrucciones del nivel</div>
+        <div class="check-progress">
+          <div class="check-prog-bar"><div class="check-prog-fill" id="cpFill" style="width:0%"></div></div>
+          <div class="check-prog-lbl" id="cpLbl">0 / 0 pasos</div>
+        </div>
+        <div style="height:10px"></div>
+        <div class="checklist" id="mChecks"></div>
+      </div>
+
+      <!-- TIPS -->
+      <div>
+        <div class="msec">💡 Tips clave</div>
+        <ul class="tips-list" id="mTips"></ul>
+      </div>
+
+      <div id="lockWarn" class="lock-warn" style="display:none">
+        ⚠️ Marca todos los pasos para poder completar el nivel
+      </div>
+
+      <div class="mactions">
+        <button class="btn btn-p" id="complBtn" onclick="completeLevel()">✅ ¡Completado!</button>
+        <button class="btn btn-s" onclick="closeMoD()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── DATA ───
+const videoData={
+  1:[{t:'Rutina de limpieza facial',u:'https://www.youtube.com/results?search_query=rutina+limpieza+facial+antes+maquillaje'},{t:'Preparar piel para maquillaje',u:'https://www.youtube.com/results?search_query=preparar+piel+maquillaje+duradero'}],
+  2:[{t:'Cómo aplicar el primer de maquillaje',u:'https://www.youtube.com/results?search_query=como+aplicar+primer+maquillaje'},{t:'Mejor primer según tu tipo de piel',u:'https://www.youtube.com/results?search_query=mejor+primer+segun+tipo+de+piel'}],
+  3:[{t:'Cómo encontrar tu tono de base',u:'https://www.youtube.com/results?search_query=como+encontrar+tono+de+base+maquillaje'},{t:'Subtonos de piel: frío, cálido, neutro',u:'https://www.youtube.com/results?search_query=subtonos+de+piel+maquillaje'}],
+  4:[{t:'Técnica beauty blender paso a paso',u:'https://www.youtube.com/results?search_query=tecnica+beauty+blender+base+maquillaje'},{t:'Cómo usar la esponja de maquillaje',u:'https://www.youtube.com/results?search_query=como+usar+esponja+maquillaje'}],
+  5:[{t:'Aplicar base con brocha plana',u:'https://www.youtube.com/results?search_query=aplicar+base+brocha+plana'},{t:'Base perfecta con brocha kabuki',u:'https://www.youtube.com/results?search_query=base+brocha+kabuki+tutorial'}],
+  6:[{t:'Cómo corregir ojeras oscuras',u:'https://www.youtube.com/results?search_query=corregir+ojeras+corrector'},{t:'Corrector de color: rueda cromática',u:'https://www.youtube.com/results?search_query=corrector+de+color+rueda+cromatica'}],
+  7:[{t:'Polvo translúcido vs polvo con color',u:'https://www.youtube.com/results?search_query=polvo+translucido+vs+polvo+color'},{t:'Técnica de baking maquillaje',u:'https://www.youtube.com/results?search_query=baking+tecnica+maquillaje'}],
+  8:[{t:'Cómo usar el setting spray',u:'https://www.youtube.com/results?search_query=como+usar+setting+spray+maquillaje'},{t:'Setting spray: técnica en X y T',u:'https://www.youtube.com/results?search_query=setting+spray+tecnica+correcta'}],
+  9:[{t:'Zonas del ojo para sombras',u:'https://www.youtube.com/results?search_query=zonas+del+ojo+para+sombras'},{t:'Mapeo de ojos para principiantes',u:'https://www.youtube.com/results?search_query=mapeo+ojos+maquillaje+principiantes'}],
+  10:[{t:'Por qué necesitas primer de ojos',u:'https://www.youtube.com/results?search_query=primer+de+ojos+para+que+sirve'},{t:'Alternativas caseras al primer de ojos',u:'https://www.youtube.com/results?search_query=alternativas+primer+de+ojos'}],
+  11:[{t:'Maquillaje de ojos nude paso a paso',u:'https://www.youtube.com/results?search_query=maquillaje+ojos+nude+paso+a+paso'},{t:'Look diario de ojos naturales',u:'https://www.youtube.com/results?search_query=look+diario+ojos+naturales'}],
+  12:[{t:'Técnica de difuminado de sombras',u:'https://www.youtube.com/results?search_query=tecnica+difuminado+sombras+ojos'},{t:'Cómo difuminar sombras perfectamente',u:'https://www.youtube.com/results?search_query=como+difuminar+sombras+perfectamente'}],
+  13:[{t:'Cómo trazar el eyeliner perfectamente',u:'https://www.youtube.com/results?search_query=como+trazar+eyeliner+perfectamente'},{t:'Eyeliner gel vs líquido vs lápiz',u:'https://www.youtube.com/results?search_query=eyeliner+gel+liquido+lapiz+diferencias'}],
+  14:[{t:'Cat eye perfecto paso a paso',u:'https://www.youtube.com/results?search_query=cat+eye+perfecto+paso+a+paso'},{t:'Trucos para la alita del eyeliner',u:'https://www.youtube.com/results?search_query=trucos+alita+eyeliner'}],
+  15:[{t:'Delineado ahumado smudge liner',u:'https://www.youtube.com/results?search_query=delineado+ahumado+smudge+liner'},{t:'Look smoky rápido y fácil',u:'https://www.youtube.com/results?search_query=look+smoky+rapido+facil'}],
+  16:[{t:'Delineador de colores tendencia',u:'https://www.youtube.com/results?search_query=delineador+colores+tendencia+maquillaje'},{t:'Maquillaje con liner de color',u:'https://www.youtube.com/results?search_query=maquillaje+liner+de+color+tutorial'}],
+  17:[{t:'Iluminador en los ojos: lagrimal',u:'https://www.youtube.com/results?search_query=iluminador+ojos+lagrimal+maquillaje'},{t:'Sombras iluminadoras para ojos',u:'https://www.youtube.com/results?search_query=sombras+iluminadoras+ojos'}],
+  18:[{t:'Máscara de pestañas sin grumos',u:'https://www.youtube.com/results?search_query=mascara+pestanas+sin+grumos'},{t:'Trucos para pestañas perfectas',u:'https://www.youtube.com/results?search_query=trucos+mascara+pestanas+perfecta'}],
+  19:[{t:'Cómo poner pestañas individuales',u:'https://www.youtube.com/results?search_query=como+poner+pestanas+individuales'},{t:'Pestañas individuales naturales tutorial',u:'https://www.youtube.com/results?search_query=pestanas+individuales+naturales+tutorial'}],
+  20:[{t:'Pestañas postizas de tira completa',u:'https://www.youtube.com/results?search_query=pestanas+postizas+tira+completa+tutorial'},{t:'Pestañas postizas para principiantes',u:'https://www.youtube.com/results?search_query=pestanas+postizas+principiantes'}],
+  21:[{t:'Cejas perfectas según tu rostro',u:'https://www.youtube.com/results?search_query=cejas+perfectas+segun+tipo+rostro'},{t:'Cómo dar forma a las cejas en casa',u:'https://www.youtube.com/results?search_query=como+dar+forma+cejas+en+casa'}],
+  22:[{t:'Rellenar cejas con lápiz natural',u:'https://www.youtube.com/results?search_query=rellenar+cejas+lapiz+natural'},{t:'Técnica de pelitos para cejas',u:'https://www.youtube.com/results?search_query=tecnica+pelitos+cejas+maquillaje'}],
+  23:[{t:'Soap brows tutorial viral',u:'https://www.youtube.com/results?search_query=soap+brows+tutorial+viral'},{t:'Cejas peinadas efecto natural',u:'https://www.youtube.com/results?search_query=cejas+peinadas+natural+tutorial'}],
+  24:[{t:'Exfoliar y cuidar los labios',u:'https://www.youtube.com/results?search_query=exfoliar+cuidar+labios+maquillaje'},{t:'Preparar labios para el lipstick',u:'https://www.youtube.com/results?search_query=preparar+labios+lipstick'}],
+  25:[{t:'Cómo delinear los labios correctamente',u:'https://www.youtube.com/results?search_query=como+delinear+labios+correctamente'},{t:'Delineador de labios: técnica natural',u:'https://www.youtube.com/results?search_query=delineador+labios+tecnica+natural'}],
+  26:[{t:'Labial rojo perfecto para tu tono',u:'https://www.youtube.com/results?search_query=labial+rojo+perfecto+tono+piel'},{t:'Cómo aplicar labial rojo sin errores',u:'https://www.youtube.com/results?search_query=aplicar+labial+rojo+sin+errores'}],
+  27:[{t:'Labios rosados para cada ocasión',u:'https://www.youtube.com/results?search_query=labios+rosados+cada+ocasion'},{t:'Hot pink lips tendencia maquillaje',u:'https://www.youtube.com/results?search_query=hot+pink+lips+tendencia'}],
+  28:[{t:'Labiales oscuros berry y burdeos',u:'https://www.youtube.com/results?search_query=labiales+oscuros+berry+burdeos'},{t:'Look sofisticado con labios oscuros',u:'https://www.youtube.com/results?search_query=look+sofisticado+labios+oscuros'}],
+  29:[{t:'Glass lips labios brillantes tutorial',u:'https://www.youtube.com/results?search_query=glass+lips+labios+brillantes+tutorial'},{t:'Cómo hacer labios jugosos viral',u:'https://www.youtube.com/results?search_query=labios+jugosos+glass+lips'}],
+  30:[{t:'Ombre lips dos colores tutorial',u:'https://www.youtube.com/results?search_query=ombre+lips+dos+colores+tutorial'},{t:'Labios degradados fácil paso a paso',u:'https://www.youtube.com/results?search_query=labios+degradados+facil'}],
+  31:[{t:'Qué es el contouring y cómo funciona',u:'https://www.youtube.com/results?search_query=que+es+contouring+como+funciona'},{t:'Luz y sombra en maquillaje facial',u:'https://www.youtube.com/results?search_query=luz+sombra+maquillaje+facial'}],
+  32:[{t:'Contorno para cada tipo de rostro',u:'https://www.youtube.com/results?search_query=contorno+cada+tipo+de+rostro'},{t:'Cómo identificar mi forma de cara',u:'https://www.youtube.com/results?search_query=identificar+forma+cara+maquillaje'}],
+  33:[{t:'Cómo aplicar el iluminador correctamente',u:'https://www.youtube.com/results?search_query=como+aplicar+iluminador+correctamente'},{t:'Iluminador polvo vs crema vs líquido',u:'https://www.youtube.com/results?search_query=iluminador+polvo+crema+liquido'}],
+  34:[{t:'Cómo aplicar el rubor blush',u:'https://www.youtube.com/results?search_query=como+aplicar+rubor+blush'},{t:'Draping blush tendencia makeup',u:'https://www.youtube.com/results?search_query=draping+blush+tendencia'}],
+  35:[{t:'Contorno en crema vs polvo',u:'https://www.youtube.com/results?search_query=contorno+crema+vs+polvo+diferencias'},{t:'Contorno en crema para principiantes',u:'https://www.youtube.com/results?search_query=contorno+crema+principiantes'}],
+  36:[{t:'Teoría del color en maquillaje',u:'https://www.youtube.com/results?search_query=teoria+del+color+maquillaje'},{t:'Rueda cromática para maquilladoras',u:'https://www.youtube.com/results?search_query=rueda+cromatica+maquillaje'}],
+  37:[{t:'Look azul eléctrico maquillaje',u:'https://www.youtube.com/results?search_query=look+azul+electrico+maquillaje'},{t:'Maquillaje azul tendencia tutorial',u:'https://www.youtube.com/results?search_query=maquillaje+azul+tendencia+tutorial'}],
+  38:[{t:'Look verde esmeralda tutorial',u:'https://www.youtube.com/results?search_query=look+verde+esmeralda+maquillaje'},{t:'Sombras verdes cómo usarlas',u:'https://www.youtube.com/results?search_query=sombras+verdes+como+usarlas'}],
+  39:[{t:'Sunset look naranja coral maquillaje',u:'https://www.youtube.com/results?search_query=sunset+look+naranja+coral+maquillaje'},{t:'Look coral veraniego tutorial',u:'https://www.youtube.com/results?search_query=look+coral+veraniego+tutorial'}],
+  40:[{t:'Look morado lila maquillaje tutorial',u:'https://www.youtube.com/results?search_query=look+morado+lila+maquillaje'},{t:'Sombras lavanda tendencia',u:'https://www.youtube.com/results?search_query=sombras+lavanda+tendencia+maquillaje'}],
+  41:[{t:'Smoky eye clásico paso a paso',u:'https://www.youtube.com/results?search_query=smoky+eye+clasico+paso+a+paso'},{t:'Smoky eye para principiantes',u:'https://www.youtube.com/results?search_query=smoky+eye+principiantes+facil'}],
+  42:[{t:'Cómo aplicar glitter en ojos',u:'https://www.youtube.com/results?search_query=como+aplicar+glitter+ojos+maquillaje'},{t:'Maquillaje glitter festival look',u:'https://www.youtube.com/results?search_query=maquillaje+glitter+festival+look'}],
+  43:[{t:'Glass skin coreano tutorial completo',u:'https://www.youtube.com/results?search_query=glass+skin+coreano+tutorial'},{t:'K-beauty maquillaje para principiantes',u:'https://www.youtube.com/results?search_query=k-beauty+maquillaje+principiantes'}],
+  44:[{t:'Cut crease tutorial paso a paso',u:'https://www.youtube.com/results?search_query=cut+crease+tutorial+paso+a+paso'},{t:'Cut crease para principiantes',u:'https://www.youtube.com/results?search_query=cut+crease+principiantes+maquillaje'}],
+  45:[{t:'Maquillaje de novia completo',u:'https://www.youtube.com/results?search_query=maquillaje+de+novia+completo+tutorial'},{t:'Maquillaje nupcial que dura todo el día',u:'https://www.youtube.com/results?search_query=maquillaje+nupcial+duradero'}],
+  46:[{t:'Maquillaje artístico floral tutorial',u:'https://www.youtube.com/results?search_query=maquillaje+artistico+floral+tutorial'},{t:'Arte en piel para empezar',u:'https://www.youtube.com/results?search_query=maquillaje+artistico+principiantes'}],
+  47:[{t:'Maquillaje editorial de revista',u:'https://www.youtube.com/results?search_query=maquillaje+editorial+revista+tutorial'},{t:'High fashion makeup tutorial',u:'https://www.youtube.com/results?search_query=high+fashion+makeup+tutorial'}],
+  48:[{t:'Airbrush makeup para principiantes',u:'https://www.youtube.com/results?search_query=airbrush+makeup+principiantes'},{t:'Qué es el airbrush y cómo funciona',u:'https://www.youtube.com/results?search_query=que+es+airbrush+maquillaje'}],
+  49:[{t:'Maquillaje para fotografía y flash',u:'https://www.youtube.com/results?search_query=maquillaje+para+fotografia+flash'},{t:'Por qué el maquillaje se ve diferente en fotos',u:'https://www.youtube.com/results?search_query=maquillaje+diferente+fotos+camara'}],
+  50:[{t:'Color correction con correctores',u:'https://www.youtube.com/results?search_query=color+correction+correctores+colores'},{t:'Corrector naranja para pieles oscuras',u:'https://www.youtube.com/results?search_query=corrector+naranja+pieles+oscuras'}],
+  51:[{t:'Maquillaje para piel grasa duradero',u:'https://www.youtube.com/results?search_query=maquillaje+piel+grasa+duradero'},{t:'Maquillaje para piel madura consejos',u:'https://www.youtube.com/results?search_query=maquillaje+piel+madura+consejos'}],
+  52:[{t:'Cómo limpiar brochas de maquillaje',u:'https://www.youtube.com/results?search_query=como+limpiar+brochas+maquillaje'},{t:'Higiene profesional de maquillaje',u:'https://www.youtube.com/results?search_query=higiene+profesional+maquillaje'}],
+  53:[{t:'Kit de maquillaje profesional esencial',u:'https://www.youtube.com/results?search_query=kit+maquillaje+profesional+esencial'},{t:'Organizar maleta de maquillaje',u:'https://www.youtube.com/results?search_query=organizar+maleta+maquillaje+profesional'}],
+  54:[{t:'Maquillaje para redes sociales',u:'https://www.youtube.com/results?search_query=maquillaje+redes+sociales+instagram+tiktok'},{t:'Fotografiar tu maquillaje para Instagram',u:'https://www.youtube.com/results?search_query=fotografiar+maquillaje+instagram'}],
+  55:[{t:'Full glam makeup tutorial completo',u:'https://www.youtube.com/results?search_query=full+glam+makeup+tutorial+completo'},{t:'Maquillaje completo de gala glamour',u:'https://www.youtube.com/results?search_query=maquillaje+completo+gala+glamour'}],
+};
+
+const stepsData={
+  1:['Consigue un limpiador facial suave (gel, espuma o aceite según tu tipo de piel)','Moja tu rostro con agua tibia para abrir los poros','Aplica el limpiador con movimientos circulares suaves durante 60 segundos','Enjuaga completamente con agua fría para cerrar poros','Aplica tónico con un algodón en movimientos ascendentes','Termina con tu hidratante favorita y deja absorber 2 minutos'],
+  2:['Aplica una pequeña cantidad de primer en el dorso de tu mano','Usando tus dedos, distribuye el primer en frente, nariz y mentón','Extiende hacia mejillas con toques suaves, sin frotar','Espera 2 minutos a que se seque completamente','Confirma que la piel se siente suave y uniforme al tacto'],
+  3:['Observa las venas de tu muñeca bajo luz natural','Determina tu subtono: azul-morado=frío, verde=cálido, mezcla=neutro','Prueba dos bases: una con base amarilla y otra con base rosada en tu mandíbula','Observa bajo luz natural cuál desaparece mejor con tu piel','Anota tu tono (claro/medio/oscuro) y subtono para futuras compras'],
+  4:['Moja la esponja beauty blender bajo el grifo y exprímela bien','Aplica pequeñas cantidades de base en frente, mejillas, nariz y mentón','Usa la esponja con movimientos de toque (dapping) en el centro del rostro','Difumina hacia las orillas con toques suaves','Revisa que no haya líneas de demarcación en mandíbula y cuello'],
+  5:['Pon una pequeña cantidad de base en el dorso de tu mano','Carga la brocha plana con movimiento de 8 en la palma','Aplica en la frente con movimientos suaves en una dirección','Continúa por mejillas, nariz y mentón','Usa la brocha kabuki en círculos para mayor cobertura si lo necesitas','Difumina bien la línea de la mandíbula hacia el cuello'],
+  6:['Aplica corrector de color (salmón/durazno) en las ojeras para neutralizar','Deja secar 30 segundos y aplica encima tu corrector del tono de tu piel','Forma un triángulo invertido bajo cada ojo con el corrector','Difumina con una esponja húmeda usando toques suaves','Sella con polvo traslúcido para que no se corra'],
+  7:['Carga una brocha grande y esponjosa con polvo traslúcido','Sacude el exceso de polvo antes de aplicar','Aplica en la zona T (frente, nariz, mentón) con movimientos suaves','Para el baking: pon bastante polvo bajo los ojos y deja 5-10 minutos','Retira el exceso con una brocha limpia y suave'],
+  8:['Asegúrate de que todo el maquillaje esté terminado y fijo','Sostén el spray a unos 30 cm de tu rostro','Pulveriza en forma de X: de esquina a esquina del rostro','Luego en forma de T: frente abajo y de lado a lado','Deja secar completamente sin tocarte la cara (unos 30 segundos)'],
+  9:['Frente a un espejo, identifica tu párpado móvil (el que se mueve al abrir/cerrar el ojo)','Localiza la cuenca: la línea donde termina el globo ocular','Identifica el lagrimal: esquina interna del ojo','Localiza la esquina externa: extremo exterior del ojo','Identifica la zona sub-ceja: área justo debajo de la ceja','Practica señalando cada zona antes de aplicar sombras'],
+  10:['Limpia y seca bien tus párpados','Toma una pequeña cantidad de primer con la yema del dedo anular','Extiende desde el lagrimal hasta la esquina externa del párpado','Difumina hacia arriba hasta la sub-ceja con toques suaves','Espera 30 segundos a que seque antes de aplicar sombras'],
+  11:['Aplica el tono base (nude/melocotón claro) en todo el párpado móvil','Carga una brocha de transición con el tono medio','Aplica en la cuenca con movimientos circulares suaves','Difumina los bordes hasta que no haya líneas duras','Aplica un tono más claro en la sub-ceja como iluminador','Añade el tono más oscuro en la esquina externa en forma de V'],
+  12:['Carga una brocha de difuminar limpia con el tono más claro que usaste','Barre la cuenca con movimientos circulares pequeños y rápidos','Usa una brocha plana para colocar el color con precisión','Vuelve con la brocha de difuminar para suavizar los bordes','Repite hasta que no veas líneas definidas entre los tonos'],
+  13:['Apoya el codo firmemente en una mesa o superficie','Estira ligeramente la esquina externa de tu ojo con un dedo','Traza pequeños trazos cortos desde el centro del ojo hacia afuera','Conecta los trazos desde el lagrimal hasta el centro','Revisa que la línea sea uniforme y corrige con bastoncillo si es necesario'],
+  14:['Traza primero la dirección de la alita mirando hacia arriba y afuera','Dibuja un pequeño triángulo hueco en la esquina externa (la alita)','Rellena el triángulo con el delineador','Traza la línea superior del párpado desde el lagrimal hasta conectar con la alita','Rellena cualquier espacio y afina con bastoncillo con corrector'],
+  15:['Aplica lápiz negro en la línea superior del párpado sin presionar demasiado','Aplica también en la línea inferior','Con una brocha ahumadora pequeña, difumina hacia arriba y abajo','Añade sombra oscura encima con una brocha para fijar','Difumina los bordes hasta lograr el efecto ahumado deseado'],
+  16:['Elige un delineador de color (azul, verde, morado, blanco)','Aplica en la línea superior del párpado como harías con el negro','Para más atrevimiento: aplica también en la línea inferior','Prueba el delineador blanco en la línea de agua para abrir los ojos','Combina con sombras neutras para equilibrar el look'],
+  17:['Carga una brocha pequeña o usa el dedo con iluminador champán/dorado','Aplica en el lagrimal (esquina interna) con toques suaves','Coloca un toque en el centro del párpado móvil','Ilumina la zona sub-ceja justo debajo del arco','Opcionalmente, añade un poco en el arco de cupido para más brillo'],
+  18:['Riza las pestañas ANTES de aplicar cualquier máscara','Carga el aplicador y retira el exceso de producto en el borde del tubo','Coloca el aplicador en la raíz de las pestañas superiores','Zigzaguea suavemente de la raíz hasta la punta','Espera 30 segundos y aplica una segunda capa fina','Aplica también en las pestañas inferiores con la punta del aplicador'],
+  19:['Separa las pestañas individuales que vas a usar','Aplica una pequeña gota de pegamento en la base de cada pestaña','Espera 30-45 segundos a que el pegamento esté semiseco (pegajoso)','Coloca cada pestaña lo más cerca posible de tu línea natural','Presiona suavemente con pinzas por 10 segundos','Añade más densidad en la esquina externa para efecto cat eye'],
+  20:['Mide la tira de pestañas sobre tu ojo y corta el exceso por el extremo externo','Aplica pegamento en toda la banda de la tira','Espera 30-45 segundos a que el pegamento esté semiseco','Coloca la tira desde el centro del ojo, luego ajusta ambos extremos','Presiona con el extremo de unas pinzas a lo largo de toda la tira','Aplica eyeliner negro sobre la tira para disimular la unión'],
+  21:['Con un lápiz, marca el inicio de tu ceja alineado con el lado interno de tu nariz','Marca el arco alineando el lápiz con el borde externo de tu pupila','Marca el final alineando el lápiz desde la comisura del labio al extremo del ojo','Depila o cubre con corrector los vellos que estén fuera de la forma marcada','Peina las cejas con un spoolie antes de rellenar'],
+  22:['Peina las cejas hacia arriba y hacia afuera con un spoolie','Usando el lápiz, traza pelitos cortos en la dirección del vello natural','Empieza con el trazo más suave al inicio de la ceja','Intensifica gradualmente hacia el arco y el final','Peina de nuevo con el spoolie para suavizar y unificar'],
+  23:['Consigue un jabón de barra transparente (glicerinado)','Humedece un spoolie limpio con agua','Frota el spoolie sobre el jabón hasta cargarlo','Peina las cejas hacia arriba con el spoolie cargado','Moldea los vellos hacia la dirección que deseas y deja secar','Opcionalmente, rellena los espacios con lápiz y vuelve a peinar'],
+  24:['Prepara un exfoliante mezclando azúcar con aceite de coco','Aplica el exfoliante en los labios con movimientos circulares suaves por 1 minuto','Retira con un pañuelo húmedo o enjuaga con agua tibia','Aplica bálsamo labial y deja absorber 2-3 minutos','Si usarás delineador, aplica primer de labios antes del color'],
+  25:['Peina y humedece ligeramente los labios','Empieza el delineado por el arco de cupido (pico superior)','Traza la línea superior del labio con trazos cortos hacia las comisuras','Delinea el labio inferior de comisura a comisura','Rellena el interior con el mismo lápiz para mayor duración','Revisa la simetría comparando ambos lados'],
+  26:['Hidrata y prepara los labios (ver nivel 24)','Delinea con un lápiz rojo del mismo tono que tu labial','Rellena con el delineador todo el interior para base de color','Aplica el labial rojo con brocha para mayor precisión','Presiona un papel de seda sobre los labios y aplica una segunda capa','Limpia los bordes con bastoncillo con corrector para perfección'],
+  27:['Elige el tono de rosa según la ocasión (nude, baby pink, hot pink)','Hidrata y delinea los labios con un lápiz del tono similar','Aplica el labial directamente desde el tubo o con brocha','Para hot pink: mantén el resto del maquillaje neutral','Añade un toque de gloss en el centro para efecto jugoso'],
+  28:['Exfolia bien los labios (son más visibles con tonos oscuros)','Delinea con el mismo tono oscuro o uno muy cercano','Rellena con el delineador para mayor duración','Aplica el labial oscuro en capas: primera capa fina, seca, segunda capa','Añade bálsamo o gloss encima para el acabado jugoso moderno'],
+  29:['Aplica una base labial nude o tu tono natural','Opcionalmente, agrega una capa de labial satinado rosado o nude','Aplica gloss transparente en el centro del labio superior e inferior','Para efecto 3D: agrega un toque de iluminador en el arco de cupido','Presiona los labios entre sí suavemente para unificar'],
+  30:['Delinea los labios con el tono más oscuro que usarás','Aplica el tono oscuro en los bordes y esquinas del labio','Aplica el tono más claro en el centro','Con el dedo o una brocha, difumina la transición entre ambos tonos','Añade gloss en el centro si deseas más efecto ombré jugoso'],
+  31:['Estudia las zonas de tu rostro frente al espejo con buena iluminación','Identifica las zonas que deseas "alejar" (receder): sienes, nariz, mandíbula','Identifica las zonas que deseas "resaltar": pómulos, frente central, nariz','Prueba a sombrear con un polvo marrón frío en las zonas que quieres alejar','Prueba a iluminar con un polvo claro las zonas que quieres resaltar'],
+  32:['Determina tu forma de rostro (ovalado, redondo, cuadrado, corazón, oblongo)','Para rostro redondo: aplica contorno en los laterales y sienes en línea recta','Para rostro cuadrado: suaviza las esquinas de la mandíbula con contorno','Para rostro corazón: contorno en la frente amplia y punta de la barbilla','Difumina siempre hacia arriba con brocha limpia hasta que no haya líneas duras'],
+  33:['Elige el iluminador según tu acabado: polvo (festivo), crema (natural), líquido (glowy)','Aplica en los pómulos en un movimiento de C hacia las sienes','Ilumina el puente de la nariz con toques pequeños','Coloca un toque en el arco de cupido y otro en el centro de la frente','Revisa que no haya exceso de brillo en zonas no deseadas'],
+  34:['Elige el tono de rubor según tu tono de piel','Sonríe ligeramente para identificar las manzanas de tus mejillas','Aplica el rubor en las manzanas con brocha circular','Para draping: lleva el rubor hacia arriba hasta las sienes','Difumina bien los bordes para que se vea natural'],
+  35:['Si usas contorno en crema: aplícalo antes del polvo fijador','Dibuja líneas de contorno en crema bajo los pómulos y sienes','Difumina con esponja o brocha inmediatamente (la crema seca rápido)','Aplica el polvo fijador encima para sellar','Si usas polvo: aplícalo sobre el polvo fijador ya puesto, con brocha angular'],
+  36:['Consigue una imagen de la rueda de colores','Identifica tu tono de piel y subtono','Practica combinando sombras análogas (vecinas en la rueda) para armonía','Prueba una combinación complementaria (colores opuestos) para más impacto','Aplica un look completo usando solo colores análogos y fotografía el resultado'],
+  37:['Aplica primer de ojos en los párpados','Carga una brocha de transición con sombra azul marino y aplica en la cuenca','Intensifica con azul eléctrico en el párpado móvil con brocha plana','Difumina los bordes para suavizar la transición','Aplica delineador azul o negro en la línea superior','Termina con máscara de pestañas negra y labios nude para equilibrar'],
+  38:['Aplica primer en los párpados','Coloca sombra verde claro como base en todo el párpado','Intensifica con verde esmeralda o bosque en la cuenca y esquina externa','Difumina bien los bordes','Añade un iluminador dorado en el lagrimal y sub-ceja','Combina con labios nude o dorados para el look lujoso'],
+  39:['Aplica primer de ojos','Coloca sombra durazno claro en todo el párpado como base','Aplica naranja o coral en la cuenca con brocha de transición','Intensifica con tono más oscuro (terracota/rojizo) en la esquina externa','Difumina creando el efecto sunset de claro a oscuro','Completa con labial coral o melocotón'],
+  40:['Aplica primer de ojos','Coloca sombra lila o lavanda en todo el párpado','Intensifica con morado más saturado en la cuenca','Añade el tono más oscuro en la esquina externa','Coloca lila o blanco en el párpado inferior para más drama','Termina con máscara y labial nude o rosado para equilibrar'],
+  41:['Aplica primer de ojos','Coloca sombra gris o marrón oscuro como base de transición en la cuenca','Intensifica con negro en el párpado móvil y esquina externa','Extiende el negro difuminado hacia el párpado inferior','Aplica negro también en la línea inferior de agua','Difumina todos los bordes hasta lograr el efecto ahumado','Termina con iluminador en el lagrimal y máscara voluminizadora'],
+  42:['Aplica primer de ojos y una base de sombra matte oscura','Aplica pegamento para glitter (o vaselina) en la zona donde irá','Espera 30 segundos a que esté semiseco','Presiona el glitter cosmético fino con el dedo o un aplicador plano','Retira el exceso con una brocha limpia','Sella opcionalmente con spray fijador'],
+  43:['Hidrata intensamente la piel con sérum o esencia en capas (técnica de los 7 pasos)','Aplica base ligera, BB cream o cushion foundation con toques suaves','Aplica rubor en crema en las mejillas con toques de dedos','Añade iluminador líquido mezclado con la base o encima en puntos clave','Termina con mascara de pestañas y labial glossy suave'],
+  44:['Aplica primer de ojos y sombra matte nude en todo el párpado','Carga una brocha plana pequeña con corrector o sombra muy clara','Dibuja el cut: una línea definida en la cuenca con el corrector','Aplica sombra oscura ARRIBA de la línea del cut solamente','Difumina la sombra oscura hacia arriba (no hacia la línea)','Aplica sombra brillante o glitter DEBAJO de la línea del cut','Revisa el corte y afínalo si es necesario'],
+  45:['Aplica primer de larga duración en todo el rostro','Usa base de alta cobertura y larga duración, aplica en capas finas','Sella con polvo y técnica de baking bajo los ojos','Aplica todos los productos ojos, labios y contorno con versiones waterproof','Termina con setting spray de larga duración (en doble capa)','Haz una prueba de resistencia al agua antes del gran día'],
+  46:['Prepara la base del maquillaje artístico (base + polvo)','Elige tu diseño: flores, mariposas, cristales, o geométrico','Dibuja el contorno del diseño con pincel fino y pintura facial','Rellena con pincel plano y colores base','Añade detalles: sombras, brillos, cristales','Fija con setting spray para larga duración'],
+  47:['Elige un concepto editorial (moda, arte, naturaleza, futurismo)','Prepara la base del maquillaje adaptada al concepto','Aplica los elementos principales del diseño sin miedo a exagerar','Añade detalles que refuercen el concepto elegido','Fotografía el resultado en diferentes ángulos con buena iluminación','Comparte en redes con el concepto explicado'],
+  48:['Limpia y prepara la piel muy bien (sin cremas aceitosas)','Llena el aerógrafo con base específica para airbrush','Prueba la presión del aerógrafo en el dorso de tu mano','Aplica en el rostro a 15-20 cm de distancia con movimientos circulares','Construye la cobertura en capas finas y uniformes','Sella con setting spray compatible con airbrush'],
+  49:['Prepara la base sin productos con SPF (causa whitecasting en flash)','Aplica la base con mayor cobertura que en maquillaje normal','Intensifica el contorno un 30% más de lo habitual','Usa sombras con más pigmento y contraste','Aplica máscara de pestañas extra voluminizadora','Fotografía el resultado bajo flash para verificar antes de salir'],
+  50:['Identifica las imperfecciones a corregir y sus tonos','Verde: aplica suavemente sobre las zonas rojas (acné, rojeces)','Lila: aplica sobre manchas amarillas o apagadas','Naranja/salmón: aplica sobre ojeras moradas (especialmente en pieles oscuras)','Difumina cada corrector de color con la esponja','Aplica encima el corrector del tono de tu piel y luego la base'],
+  51:['Identifica tu tipo de piel antes de empezar','Para piel grasa: aplica primer matificante + base oil-free + polvo sin fin','Para piel seca: usa base hidratante + avoid powder en mejillas + setting spray glowy','Para piel mixta: combina técnicas según la zona del rostro','Para piel madura: evita polvos en líneas de expresión + usa base luminosa','Ajusta tu rutina según la estación del año'],
+  52:['Lava tus brochas con champú suave o jabón de brochas','Enjuaga hasta que el agua salga completamente limpia','Moldea las cerdas y coloca las brochas a secar boca abajo (colgadas)','Limpia las esponjas con jabón en barra frotando suavemente','Desinfecta paletas y productos con alcohol isopropílico al 70%','Nunca compartas aplicadores directos (mascara, labial) con clientes'],
+  53:['Lista los 10 productos esenciales: base, corrector, polvo, primer, contorno, iluminador, blush, sombras neutrales, máscara y labiales básicos','Invierte en al menos 5 brochas de calidad: base, corrector, difuminar, iluminador y polvo','Organiza tu kit por categorías en pouch o maleta con divisiones','Agrega productos de higiene: alcohol, toallas desechables, bastoncillos','Revisa y repón tu kit cada 3 meses'],
+  54:['Configura tu espacio de grabación con buena iluminación (luz natural o anillo de luz)','Limpia el lente de tu cámara o teléfono antes de empezar','Usa la cámara trasera para mayor detalle y calidad','Planea el look antes de empezar: elige colores y estilo','Graba cada paso del proceso para crear contenido de "antes y después"','Edita el color y brillo de las fotos antes de publicar'],
+  55:['Prepara y limpia tu piel (nivel 1)','Aplica primer (nivel 2) y primer de ojos (nivel 10)','Aplica base, corrector y polvo fijador (niveles 4-7)','Crea el look de ojos completo: sombras, delineado y pestañas (niveles 11-20)','Define y rellena las cejas (niveles 21-23)','Aplica contorno, iluminador y rubor (niveles 31-35)','Termina con el look de labios elegido (niveles 24-30)','Sella todo con setting spray (nivel 8) y fotografía tu resultado final'],
+};
+
+const levels=[
+  {id:1,s:'base',ic:'🧴',t:'Limpieza y preparación de la piel',d:'Antes de cualquier maquillaje, la piel limpia es la clave del éxito. Aprende la rutina de limpieza, tonificación e hidratación para preparar el mejor lienzo.',tips:['Limpia en movimientos circulares ascendentes','Nunca apliques base sobre piel seca','El tónico cierra los poros antes del maquillaje'],xp:50},
+  {id:2,s:'base',ic:'✨',t:'Primer e imprimador',d:'El primer es tu mejor aliado para un maquillaje que dure todo el día.',tips:['Aplica en capas finas','Deja secar 2 min antes de la base','Para poros grandes usa primer de silicona'],xp:50},
+  {id:3,s:'base',ic:'🖌️',t:'Conoce tu tono de piel',d:'Encontrar tu subtono es fundamental para elegir el color correcto de base.',tips:['Venas azules=frío, verdes=cálido','Prueba la base en el cuello','Luz natural para elegir tu tono'],xp:50},
+  {id:4,s:'base',ic:'💧',t:'Base con esponja beauty blender',d:'La técnica de dapping logra una base sin marcas y con acabado natural impecable.',tips:['Moja la esponja y exprime el exceso','Movimientos de toque, no arrastre','Empieza por el centro del rostro'],xp:55},
+  {id:5,s:'base',ic:'🪄',t:'Aplicación de base con brocha',d:'Brocha plana vs. kabuki: dos acabados distintos. Domina ambas técnicas.',tips:['Brocha plana: una sola dirección','Kabuki: círculos para más cobertura','Limpia tus brochas semanalmente'],xp:55},
+  {id:6,s:'base',ic:'🌟',t:'Corrector: ojeras y manchas',d:'El corrector transforma tu rostro en segundos.',tips:['Ojeras moradas: corrector durazno','Triángulo invertido bajo el ojo','Sella con polvo para que no se corra'],xp:60},
+  {id:7,s:'base',ic:'✨',t:'Polvo de fijación',d:'El polvo es el secreto para que tu maquillaje dure horas.',tips:['Baking ideal para zonas T','Brocha grande en movimientos suaves','Traslúcido para todo tipo de piel'],xp:60},
+  {id:8,s:'base',ic:'💦',t:'Setting spray: fijación final',d:'El spray fijador une todo el maquillaje y le da un acabado de piel real.',tips:['Aplica en X luego en T','Para efecto jugoso mezcla con aceite','Matte para grasa, glowy para seca'],xp:60},
+  {id:9,s:'ojos',ic:'👁️',t:'Anatomía del ojo: mapeo',d:'Conoce las zonas del ojo: párpado móvil, cuenca, lagrimal, zona del té, sub-ceja.',tips:['Lagrimal ilumina la mirada','Cuenca lleva el tono oscuro','Sub-ceja es para iluminar'],xp:65},
+  {id:10,s:'ojos',ic:'🪄',t:'Primer de párpados',d:'El primer de ojos es esencial para que las sombras duren todo el día.',tips:['Capa muy fina con el dedo','El corrector puede funcionar como primer','30 segundos antes de las sombras'],xp:65},
+  {id:11,s:'ojos',ic:'🌸',t:'Sombras: look natural nude',d:'El look nude es el punto de partida. Profundidad con marrones, melocotones y rosas.',tips:['2-3 tonos más oscuros para la cuenca','Difumina siempre los bordes','Tono base en todo el párpado primero'],xp:70},
+  {id:12,s:'ojos',ic:'💫',t:'Técnica de difuminado',d:'El difuminado es la habilidad más importante. Una buena mezcla hace la diferencia.',tips:['Movimientos circulares pequeños','Nunca oscuro sin transición clara','Brocha limpia difumina mejor'],xp:70},
+  {id:13,s:'ojos',ic:'🖤',t:'Delineado clásico: línea fina',d:'El eyeliner en línea fina define los ojos de manera elegante y atemporal.',tips:['Codo apoyado en superficie firme','Pequeños trazos, no uno solo','Gel es más fácil para principiantes'],xp:75},
+  {id:14,s:'ojos',ic:'🔥',t:'Cat eye: ojo de gato',d:'Uno de los looks más icónicos. Aprende el método de la alita perfecta.',tips:['Dibuja la alita primero, luego conecta','Tarjeta de crédito como guía','Bastoncillo con corrector para errores'],xp:80},
+  {id:15,s:'ojos',ic:'🌙',t:'Delineado ahumado smudge',d:'El smudged liner es sensual y perfecto para noches.',tips:['Lápiz negro + brocha ahumadora','El kohl difumina mejor','Sombra oscura encima para intensidad'],xp:75},
+  {id:16,s:'ojos',ic:'🌈',t:'Delineado de colores',d:'Los delineadores de colores están en tendencia. Úsalos sin miedo.',tips:['Blanco en línea de agua agranda ojos','Azul marino es más wearable','Combina con sombras neutras'],xp:75},
+  {id:17,s:'ojos',ic:'✨',t:'Iluminador en el ojo',d:'Iluminador estratégico para abrir y agrandar la mirada.',tips:['Champán en lagrimal agranda','Blanco en sub-ceja levanta el arco','Centro brillante = ojo grande'],xp:70},
+  {id:18,s:'ojos',ic:'🦋',t:'Máscara de pestañas perfecta',d:'La máscara es el producto estrella. Separa, alarga y encurva sin grumos.',tips:['Riza ANTES de la máscara','Zigzag desde la raíz a la punta','2 capas finas > 1 gruesa'],xp:70},
+  {id:19,s:'ojos',ic:'💎',t:'Pestañas postizas individuales',d:'Las individuales son más naturales. Aprende a colocarlas perfectamente.',tips:['Más densidad en extremo externo','Espera 30 seg antes de soltar','Pegamento semitransparente más fácil'],xp:80},
+  {id:20,s:'ojos',ic:'🌟',t:'Pestañas postizas de tira',d:'Las de tira transforman la mirada en segundos.',tips:['Corta el exceso por el extremo externo','Pegamento: espera 30 segundos','Presiona con pinzas, no con dedos'],xp:85},
+  {id:21,s:'ojos',ic:'🌿',t:'Cejas: forma según tu rostro',d:'Las cejas enmarcan el rostro. Identifica la forma ideal para tu cara.',tips:['Inicio: lado interno de la nariz','Arco: borde externo de la pupila','Final: comisura nariz-ojo'],xp:75},
+  {id:22,s:'ojos',ic:'🖊️',t:'Relleno de cejas con lápiz',d:'El lápiz es la herramienta más precisa para resultado ultra natural.',tips:['Trazos cortos en dirección del vello','Más claro al inicio, oscuro al final','Peina antes y después'],xp:75},
+  {id:23,s:'ojos',ic:'💪',t:'Soap brows: cejas virales',d:'El soap brows da volumen y fijación. La técnica peinada más de moda.',tips:['Jabón transparente glicerinado','Humedece el spoolie antes','Peina hacia arriba para máximo volumen'],xp:70},
+  {id:24,s:'labios',ic:'💋',t:'Cuidado y preparación de labios',d:'Los labios hidratados lucen mejor con cualquier color.',tips:['Exfolia con azúcar y aceite de coco','Bálsamo antes del color','El primer fija mejor el color'],xp:65},
+  {id:25,s:'labios',ic:'❤️',t:'Delineador de labios perfecto',d:'El delineador define el contorno y evita que el color se corra.',tips:['Empieza por el arco de cupido','Mismo tono que el labial dura más','Rellena todo para mayor duración'],xp:70},
+  {id:26,s:'labios',ic:'💄',t:'Labial rojo clásico',d:'El rojo es el color más icónico. Elige el tono para tu subtono y aplícalo perfectamente.',tips:['Frío: rojo azul | Cálido: rojo naranja','Corrector en bordes para precisión','Papel de seda entre capas fija más'],xp:80},
+  {id:27,s:'labios',ic:'🩷',t:'Labios rosa: de nude a hot pink',d:'Los rosas abarcan desde el nude más sutil hasta el hot pink más llamativo.',tips:['Nude rosado alarga visualmente','Hot pink con ojos neutros','Melocotón-rosa es universal'],xp:75},
+  {id:28,s:'labios',ic:'🍇',t:'Labios berries y ciruelas',d:'Tonos berry, burdeos, vino: seductores y sofisticados.',tips:['Con oscuros simplifica los ojos','Varias capas para profundidad','Bálsamo encima = acabado moderno'],xp:80},
+  {id:29,s:'labios',ic:'✨',t:'Glass lips: labios jugosos',d:'Los glass lips son la tendencia más glamorosa.',tips:['Gloss en el centro para 3D','Satinado + gloss transparente','Iluminador en arco de cupido'],xp:80},
+  {id:30,s:'labios',ic:'🌸',t:'Ombre lips: dos tonos',d:'El ombre mezcla dos colores para un resultado artístico.',tips:['Oscuro en bordes, claro en el centro','Esponja para difuminar la transición','Colores de la misma familia'],xp:85},
+  {id:31,s:'contorno',ic:'🌟',t:'Teoría del contorno y luz',d:'Entender luz y sombra es la base del contouring.',tips:['Sombras receden, luces resaltan','Contorno en zonas que deseas alejar','Iluminador donde el sol da naturalmente'],xp:75},
+  {id:32,s:'contorno',ic:'💫',t:'Contorno según forma de rostro',d:'Cada forma de rostro tiene su mapa específico.',tips:['Redondo: contorno lateral y sienes','Cuadrado: mandíbula y esquinas','Corazón: frente y mandíbula'],xp:80},
+  {id:33,s:'contorno',ic:'✨',t:'Iluminador: tipos y técnicas',d:'Polvo, crema o líquido en los puntos correctos.',tips:['Pómulos, arco de cupido, nariz, lagrimal','Crema debajo del polvo dura más','Evita en zonas que quieres minimizar'],xp:80},
+  {id:34,s:'contorno',ic:'🌸',t:'Blush: rubor y draping',d:'El rubor da vida al rostro. Natural, draping, sunburnt.',tips:['Sonríe y aplica en la manzana','Draping sube el rubor a las sienes','Para oscura: berries o coral'],xp:75},
+  {id:35,s:'contorno',ic:'🔥',t:'Contorno en polvo vs crema',d:'Crema más natural; polvo más fácil de difuminar.',tips:['Crema antes del polvo','Polvo sobre polvo fijador','Difumina hacia arriba, nunca abajo'],xp:80},
+  {id:36,s:'color',ic:'🎨',t:'Teoría del color aplicada',d:'La rueda de color permite combinaciones armónicas e impactantes.',tips:['Complementarios son opuestos','Análogos crean armonía','El opuesto a tu subtono te favorece'],xp:85},
+  {id:37,s:'color',ic:'💙',t:'Look azul eléctrico',d:'Sombras, delineador y máscara azul en tendencia.',tips:['Marino más wearable que brillante','Azul en ojos con labios nude','Acero en delineador: elegante'],xp:85},
+  {id:38,s:'color',ic:'💚',t:'Look verde: esmeralda a menta',d:'Desde el esmeralda glamoroso hasta el verde menta fresco.',tips:['Verde resalta los ojos cafés','Menta para primavera/verano','Esmeralda + dorado = lujoso'],xp:85},
+  {id:39,s:'color',ic:'🟠',t:'Look naranja y coral sunset',d:'Irresistibles y favorecedores. El look sunset viral.',tips:['Coral universal para todos los tonos','Mezcla durazno y naranja para gradient','Naranja encendido con piel bronceada'],xp:85},
+  {id:40,s:'color',ic:'💜',t:'Look morado lila y lavanda',d:'Románticos y favorecedores. Úsalos con confianza.',tips:['Lavanda abre ojos oscuros','Morado + negro = dramático','Lila en párpado inferior: de moda'],xp:85},
+  {id:41,s:'especial',ic:'🌊',t:'Smoky eye: ahumado clásico',d:'El look de noche más icónico.',tips:['Gris antes del negro','Trabaja párpado inferior','Iluminador en lagrimal equilibra'],xp:90},
+  {id:42,s:'especial',ic:'✨',t:'Maquillaje glitter y brillos',d:'Glitter fine y chunky para looks únicos.',tips:['Primer de glitter como adhesivo','Solo glitter cosmético en el ojo','Chunky para cuerpo, fine para ojo'],xp:90},
+  {id:43,s:'especial',ic:'🌸',t:'K-beauty: glass skin coreano',d:'Piel que brilla desde adentro.',tips:['Hidratación: capas de esencia','Base ligera o BB cream','Blush tapping: el toque coreano'],xp:90},
+  {id:44,s:'especial',ic:'🦋',t:'Cut crease: línea de corte',d:'Técnica avanzada para look editorial dramático.',tips:['Corrector en párpado para el corte','Brocha plana pequeña = corte preciso','Practica con matte antes de glitter'],xp:95},
+  {id:45,s:'especial',ic:'🌺',t:'Maquillaje de novia',d:'Que dure todo el día y resista lágrimas.',tips:['Waterproof en máscara y eyeliner','Prueba 2 semanas antes','Fijación extra en zonas de movimiento'],xp:95},
+  {id:46,s:'especial',ic:'🎭',t:'Maquillaje artístico: florales',d:'Flores, mariposas, cristales: el rostro como lienzo.',tips:['Pincel fino para trazos precisos','Capas y espera el secado','Acuarelada más fácil para empezar'],xp:100},
+  {id:47,s:'especial',ic:'🌙',t:'Maquillaje editorial de revista',d:'Rompe las reglas para crear impacto visual.',tips:['Las reglas no existen en editorial','Inspírate en obras de arte','Exagera deliberadamente'],xp:100},
+  {id:48,s:'pro',ic:'👑',t:'Airbrush: maquillaje con aerógrafo',d:'El acabado más perfecto, usado en cine y TV.',tips:['15-20 cm del rostro','Círculos constantes sin pausas','Base específica para aerógrafo'],xp:110},
+  {id:49,s:'pro',ic:'🎬',t:'Maquillaje para fotografía',d:'La cámara cambia todo. Ajusta tu maquillaje para fotos.',tips:['Sin SPF: causa whitecasting en flash','Contorno más intenso para cámara','El flash aplana, intensifica'],xp:110},
+  {id:50,s:'pro',ic:'🌟',t:'Color correction avanzada',d:'Correctores de color para neutralizar imperfecciones.',tips:['Verde cancela rojeces','Lila apaga tonos amarillos','Naranja cancela morado en piel oscura'],xp:115},
+  {id:51,s:'pro',ic:'💆',t:'Maquillaje para diferentes pieles',d:'Grasa, seca, mixta, madura: técnicas distintas para cada tipo.',tips:['Grasa: primer matte + polvo sin fin','Seca: base hidratante + glowy spray','Madura: evita polvos en líneas'],xp:115},
+  {id:52,s:'pro',ic:'🎓',t:'Higiene e instrumentos pro',d:'La higiene de brochas es fundamental para la salud de tus clientes.',tips:['Limpia brochas semanalmente','Alcohol al 70% para paletas','Nunca compartas aplicadores directos'],xp:115},
+  {id:53,s:'pro',ic:'💼',t:'Construye tu kit profesional',d:'Los esenciales para un kit pro. Inversiones inteligentes.',tips:['Invierte en brochas de calidad','Paletas neutras > colores','10 esenciales > 50 mediocres'],xp:120},
+  {id:54,s:'pro',ic:'📱',t:'Maquillaje para redes sociales',d:'Instagram, TikTok y YouTube tienen sus propias reglas.',tips:['Luz natural de ventana = mejor selfie','Cámara trasera da más detalle','Anillo de luz elimina sombras'],xp:120},
+  {id:55,s:'pro',ic:'🏆',t:'Proyecto final: Look 360° completo',d:'¡Nivel máximo! Skincare → base → ojos → labios → contorno. Tu transformación total.',tips:['Orden: base → ojos → contorno → labios','Revisa bajo diferentes luces','¡Celebra tu progreso! Compara con nivel 1 ✨'],xp:200},
+];
+
+const secs=[
+  {id:'base',lbl:'💄 Preparación y Base'},
+  {id:'ojos',lbl:'👁️ Ojos, Pestañas y Cejas'},
+  {id:'labios',lbl:'💋 Arte de Labios'},
+  {id:'contorno',lbl:'✨ Contorno & Escultura'},
+  {id:'color',lbl:'🎨 Explosión de Color'},
+  {id:'especial',lbl:'💫 Looks Especiales'},
+  {id:'pro',lbl:'👑 Nivel Profesional'},
+];
+
+const badgesDef=[
+  {id:'first',ic:'🌸',lbl:'Primera Pincelada',desc:'Completa tu primer nivel',cond:s=>s.c.length>=1},
+  {id:'b5',ic:'💄',lbl:'5 Niveles',desc:'Completa 5 niveles',cond:s=>s.c.length>=5},
+  {id:'b10',ic:'✨',lbl:'10 Niveles',desc:'Completa 10 niveles',cond:s=>s.c.length>=10},
+  {id:'b20',ic:'🔥',lbl:'20 Niveles',desc:'Completa 20 niveles',cond:s=>s.c.length>=20},
+  {id:'b30',ic:'💅',lbl:'30 Niveles',desc:'Completa 30 niveles',cond:s=>s.c.length>=30},
+  {id:'b55',ic:'👑',lbl:'GlowUp Maestra',desc:'Completa los 55 niveles',cond:s=>s.c.length>=55},
+  {id:'base_done',ic:'🌟',lbl:'Base Perfecta',desc:'Completa todos los niveles de Base',cond:s=>levels.filter(l=>l.s==='base').every(l=>s.c.includes(l.id))},
+  {id:'eye_done',ic:'👁️',lbl:'Mirada de Diosa',desc:'Completa todos los niveles de Ojos',cond:s=>levels.filter(l=>l.s==='ojos').every(l=>s.c.includes(l.id))},
+  {id:'lip_done',ic:'💋',lbl:'Labios de Ensueño',desc:'Completa todos los niveles de Labios',cond:s=>levels.filter(l=>l.s==='labios').every(l=>s.c.includes(l.id))},
+  {id:'pro_start',ic:'🎓',lbl:'Empezando Pro',desc:'Completa 1 nivel Pro',cond:s=>levels.filter(l=>l.s==='pro').some(l=>s.c.includes(l.id))},
+  {id:'streak3',ic:'🔥',lbl:'3 días seguidos',desc:'Racha de 3 días',cond:s=>s.streak>=3},
+  {id:'streak7',ic:'💪',lbl:'Una semana',desc:'Racha de 7 días',cond:s=>s.streak>=7},
+  {id:'xp500',ic:'⭐',lbl:'500 XP',desc:'Acumula 500 XP',cond:s=>s.xp>=500},
+  {id:'xp2000',ic:'🌙',lbl:'2000 XP',desc:'Acumula 2000 XP',cond:s=>s.xp>=2000},
+  {id:'xp5000',ic:'🏆',lbl:'5000 XP',desc:'Acumula 5000 XP',cond:s=>s.xp>=5000},
+];
+
+const fakeUsers=[
+  {name:'Isabella M.',av:'I',xp:4820,streak:14},
+  {name:'Valentina R.',av:'V',xp:4150,streak:9},
+  {name:'Camila G.',av:'C',xp:3760,streak:7},
+  {name:'Sofía L.',av:'S',xp:3200,streak:5},
+  {name:'Mariana P.',av:'M',xp:2850,streak:12},
+  {name:'Gabriela T.',av:'G',xp:2100,streak:3},
+  {name:'Daniela F.',av:'D',xp:1680,streak:6},
+  {name:'Paola H.',av:'P',xp:940,streak:2},
+  {name:'Luciana B.',av:'L',xp:520,streak:4},
+];
+
+// ─── STATE ───
+let ST=loadState();
+let curLvl=null, activeFilter='all';
+// checkStates[lvlId] = Set of checked step indices
+let checkStates={};
+
+function loadState(){
+  try{const s=JSON.parse(localStorage.getItem('gu_v3'));if(s)return s;}catch(e){}
+  return{c:[],xp:0,streak:1,lastDay:null,badges:[]};
+}
+function saveState(){localStorage.setItem('gu_v3',JSON.stringify(ST));}
+
+function checkBadges(){
+  let newB=[];
+  badgesDef.forEach(b=>{
+    if(!ST.badges.includes(b.id)&&b.cond(ST)){ST.badges.push(b.id);newB.push(b);}
+  });
+  if(newB.length){saveState();newB.forEach((b,i)=>setTimeout(()=>showToast(`🎖️ Badge: ${b.ic} ${b.lbl}`),i*2000));}
+}
+
+// ─── RENDER ───
+function render(){
+  const main=document.getElementById('main');
+  main.innerHTML='';
+  const next=levels.find(l=>!ST.c.includes(l.id));
+  const nextId=next?next.id:null;
+  if(activeFilter==='ranking'){renderRanking(main);return;}
+  if(activeFilter==='badges'){renderBadgesPage(main);return;}
+  const show=activeFilter==='all'?secs:secs.filter(s=>s.id===activeFilter);
+  show.forEach(sec=>{
+    const lvls=levels.filter(l=>l.s===sec.id);
+    const div=document.createElement('div');
+    div.innerHTML=`<div class="sdiv"><div class="sdiv-line"></div><div class="sdiv-lbl">${sec.lbl}</div><div class="sdiv-line"></div></div><div class="lgrid">${lvls.map(l=>cardHTML(l,nextId)).join('')}</div>`;
+    main.appendChild(div);
+  });
+  updateStats();
+}
+
+function cardHTML(l,nextId){
+  const done=ST.c.includes(l.id),curr=l.id===nextId,lckd=!done&&!curr;
+  const cls=done?'done':curr?'curr':'lckd';
+  const badge=done?'<span class="lbadge b-done">✓</span>':curr?'<span class="lbadge b-star">★</span>':'<span class="lbadge b-lock">🔒</span>';
+  const stars=[1,2,3].map(i=>`<span class="star ${i<=(done?3:curr?1:0)?'lit':''}">⭐</span>`).join('');
+  return `<div class="lcard ${cls}" onclick="openLvl(${l.id})"><div class="lic">${l.ic}${badge}</div><div class="lnum">Nivel ${l.id}</div><div class="ltitle">${l.t}</div><div class="lstars">${stars}</div><div class="lxp">+${l.xp} XP</div></div>`;
+}
+
+function renderRanking(main){
+  const all=[...fakeUsers,{name:'Tú 💄',av:'T',xp:ST.xp,streak:ST.streak,me:true}].sort((a,b)=>b.xp-a.xp);
+  const mx=all[0].xp||1;
+  main.innerHTML=`<div class="sdiv"><div class="sdiv-line"></div><div class="sdiv-lbl">🏆 Ranking Global</div><div class="sdiv-line"></div></div>
+  <div class="lb-wrap"><div class="lb-title">🌟 Top Maquilladoras de la Academia</div>
+  ${all.map((u,i)=>`<div class="lb-row ${u.me?'me':''}">
+    <div class="lb-rank">${i===0?'🥇':i===1?'🥈':i===2?'🥉':i+1}</div>
+    <div class="lb-avatar">${u.av}</div>
+    <div class="lb-name-wrap"><div class="lb-name">${u.name}${u.me?' 👈':''}</div><div class="lb-bar"><div class="lb-bar-fill" style="width:${Math.round(u.xp/mx*100)}%"></div></div></div>
+    <div style="text-align:right"><div class="lb-xp">⭐ ${u.xp} XP</div><div style="font-size:.72rem;color:var(--ts)">🔥 ${u.streak} días</div></div>
+  </div>`).join('')}</div>`;
+  updateStats();
+}
+
+function renderBadgesPage(main){
+  main.innerHTML=`<div class="sdiv"><div class="sdiv-line"></div><div class="sdiv-lbl">🎖️ Mis Badges</div><div class="sdiv-line"></div></div>
+  <div class="badges-row">${badgesDef.map(b=>{const e=ST.badges.includes(b.id);return`<div class="badge-item ${e?'earned':''}"><span class="bic">${e?b.ic:'🔒'}</span><div><div style="font-weight:800">${b.lbl}</div><div style="font-size:.7rem;opacity:.7">${b.desc}</div></div></div>`;}).join('')}</div>`;
+  updateStats();
+}
+
+function updateStats(){
+  const d=ST.c.length,pct=Math.round(d/55*100);
+  document.getElementById('pb').style.width=pct+'%';
+  document.getElementById('pLbl').textContent=`${d} de 55 niveles`;
+  document.getElementById('pPct').textContent=pct+'%';
+  ['hStreak','sVal'].forEach(id=>document.getElementById(id).textContent=ST.streak);
+  ['hXp','xpVal'].forEach(id=>document.getElementById(id).textContent=ST.xp);
+  document.getElementById('hDone').textContent=d;
+}
+
+function filterSec(id,el){
+  activeFilter=id;
+  document.querySelectorAll('.ntab').forEach(t=>t.classList.remove('on'));
+  el.classList.add('on');
+  render();
+}
+
+// ─── OPEN LEVEL ───
+function openLvl(id){
+  const lvl=levels.find(l=>l.id===id);if(!lvl)return;
+  const done=ST.c.includes(id);
+  const next=levels.find(l=>!ST.c.includes(l.id));
+  if(!done&&next&&next.id!==id){showToast('🔒 Completa el nivel anterior primero');return;}
+  curLvl=id;
+  if(!checkStates[id])checkStates[id]=new Set();
+
+  document.getElementById('mIc').textContent=lvl.ic;
+  document.getElementById('mNum').textContent=`Nivel ${lvl.id} · ${lvl.xp} XP`;
+  document.getElementById('mTitle').textContent=lvl.t;
+  document.getElementById('mDesc').textContent=lvl.d;
+
+  // Videos
+  const vids=videoData[id]||[];
+  document.getElementById('mVids').innerHTML=vids.map(v=>`
+    <a class="vid-btn" href="${v.u}" target="_blank" rel="noopener noreferrer">
+      <div class="vid-play">▶</div>
+      <div class="vid-info">
+        <div class="vid-title">${v.t}</div>
+        <div class="vid-sub">📺 Abrir en YouTube</div>
+      </div>
+      <span class="vid-arrow">→</span>
+    </a>`).join('');
+
+  // Checklist
+  renderChecklist(id, done);
+
+  // Tips
+  document.getElementById('mTips').innerHTML=lvl.tips.map(t=>`<li>💡 ${t}</li>`).join('');
+
+  // Complete button
+  const btn=document.getElementById('complBtn');
+  if(done){btn.textContent='✅ ¡Ya completado!';btn.disabled=false;btn.style.opacity='.65';}
+  else{btn.textContent='✅ ¡Completado!';btn.disabled=true;btn.style.opacity='.45';}
+  document.getElementById('lockWarn').style.display=done?'none':'flex';
+
+  document.getElementById('mo').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function renderChecklist(id, done){
+  const steps=stepsData[id]||[];
+  const checked=checkStates[id]||new Set();
+  const total=steps.length, doneCount=done?total:checked.size;
+  const pct=total?Math.round(doneCount/total*100):0;
+  document.getElementById('cpFill').style.width=pct+'%';
+  document.getElementById('cpLbl').textContent=`${doneCount} / ${total} pasos`;
+  document.getElementById('mChecks').innerHTML=steps.map((s,i)=>{
+    const isChecked=done||checked.has(i);
+    return`<div class="check-item ${isChecked?'checked':''}" onclick="${done?'':'toggleCheck('+i+')'}" style="${done?'cursor:default':''}">
+      <div class="check-box">${isChecked?'✓':''}</div>
+      <div><div class="check-num">Paso ${i+1}</div><div class="check-step">${s}</div></div>
+    </div>`;
+  }).join('');
+}
+
+function toggleCheck(idx){
+  const set=checkStates[curLvl]||(checkStates[curLvl]=new Set());
+  set.has(idx)?set.delete(idx):set.add(idx);
+  const steps=stepsData[curLvl]||[];
+  const all=set.size===steps.length;
+  const btn=document.getElementById('complBtn');
+  btn.disabled=!all;btn.style.opacity=all?'1':'.45';
+  document.getElementById('lockWarn').style.display=all?'none':'flex';
+  renderChecklist(curLvl,false);
+}
+
+// ─── CLOSE MODAL ───
+function closeMo(e){if(e.target===document.getElementById('mo'))closeMoD();}
+function closeMoD(){document.getElementById('mo').classList.remove('open');document.body.style.overflow='';}
+
+// ─── COMPLETE LEVEL ───
+function completeLevel(){
+  if(ST.c.includes(curLvl)){closeMoD();return;}
+  const lvl=levels.find(l=>l.id===curLvl);
+  ST.c.push(curLvl);ST.xp+=lvl.xp;
+  const today=new Date().toDateString();
+  if(ST.lastDay!==today){
+    const yest=new Date(Date.now()-86400000).toDateString();
+    ST.streak=ST.lastDay===yest?ST.streak+1:1;
+    ST.lastDay=today;
+  }
+  saveState();checkBadges();confetti();showLvlUp(lvl);closeMoD();render();
+}
+
+function showLvlUp(lvl){
+  document.getElementById('luIc').textContent=lvl.ic;
+  document.getElementById('luTitle').textContent=`¡Nivel ${lvl.id} completado!`;
+  document.getElementById('luSub').textContent=`+${lvl.xp} XP · ${lvl.t} ✨`;
+  document.getElementById('lvlup').classList.add('show');
+}
+function closeLvlUp(){document.getElementById('lvlup').classList.remove('show');}
+
+function confetti(){
+  const c=document.getElementById('cc');
+  const cols=['#e91e8c','#f06292','#f48fb1','#ce93d8','#f9a825','#fff176','#80deea'];
+  c.innerHTML='';
+  for(let i=0;i<70;i++){
+    const el=document.createElement('div');el.className='cp';
+    el.style.cssText=`left:${Math.random()*100}%;top:-20px;background:${cols[~~(Math.random()*cols.length)]};width:${Math.random()*9+5}px;height:${Math.random()*9+5}px;border-radius:${Math.random()>.5?'50%':'3px'};animation-duration:${Math.random()*2+2}s;animation-delay:${Math.random()*.6}s;`;
+    c.appendChild(el);
+  }
+  setTimeout(()=>c.innerHTML='',5000);
+}
+
+let _tt;
+function showToast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  clearTimeout(_tt);_tt=setTimeout(()=>t.classList.remove('show'),3200);
+}
+
+render();
+</script>
+</body>
+</html>
